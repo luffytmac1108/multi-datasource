@@ -1,0 +1,27 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    # 启用动态数据源
+    dynamic:
+      # primary 指定默认数据源，必须是下面的一个key
+      primary: mysql
+      # strict 指定当找不到数据源时是否报错
+      strict: false
+      # 这里配置多个数据源
+      datasource:
+        mysql:
+          url: jdbc:mysql://localhost:3306/multi_datasource?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+          username: root
+          password: 123456
+          driver-class-name: com.mysql.cj.jdbc.Driver
+        postgresql:
+          url: jdbc:postgresql://localhost:5432/multi_datasource
+          username: postgres
+          password: postgres
+          driver-class-name: org.postgresql.Driver
+
+logging:
+  level:
+    com.baomidou.dynamic.datasource: DEBUG
